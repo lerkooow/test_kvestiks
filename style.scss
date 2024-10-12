@@ -10,6 +10,19 @@ body {
   }
 }
 
+.container,
+.container-fluid,
+.container-lg,
+.container-md,
+.container-sm,
+.container-xl,
+.container-xxl {
+  padding-right: 0;
+  padding-left: 0;
+}
+
+// Media
+
 @media (min-width: 1400px) {
   .container,
   .container-lg,
@@ -21,48 +34,19 @@ body {
   }
 }
 
-@media (max-width: 576px) {
-  .container,
-  .container-fluid,
-  .container-lg,
-  .container-md,
-  .container-sm,
-  .container-xl,
-  .container-xxl {
-    padding-right: 0;
-    padding-left: 0;
-  }
-}
-
 // Header
 
-.header {
-  box-shadow: 0 1px 4px rgba(34, 34, 38, 0.2);
-  background: #fff;
-  height: 56px;
-  font-size: 10px;
+.nav-items {
+  gap: 32px;
+}
 
-  .header_logo {
-    margin: 8px 0;
+.nav-item {
+  p {
+    font-size: 10px;
   }
-
-  .nav-items {
-    gap: 32px;
-
-    .nav-item img {
-      margin-bottom: 4px;
-    }
-  }
-
-  .nav-item-mobile {
+  img {
     width: 24px;
     height: 24px;
-
-    .nav-item-mobile img {
-      width: 100%;
-      height: 100%;
-      object-fit: contain;
-    }
   }
 }
 
@@ -70,18 +54,32 @@ body {
   .header {
     padding: 0 10px;
   }
+
+  .nav-items {
+    margin: 10px 0;
+  }
+}
+
+// Main
+
+.main {
+  margin-top: 44px;
+}
+
+@media (min-width: 576px) {
+  .main {
+    margin-top: 56px;
+  }
 }
 
 // Breadcrumb
 
 .breadcrumb {
-  margin-top: 24px;
-  margin-bottom: 32px;
+  padding-bottom: 32px;
 }
 
 .breadcrumb-item + .breadcrumb-item::before {
   content: "\2192";
-  color: #424242;
   padding: 0 10px;
   margin-top: -2px;
 }
@@ -90,90 +88,17 @@ body {
   padding-left: 0;
 }
 
-.breadcrumb-item {
-  color: #424242;
-  font-size: 14px;
-
-  a {
-    text-decoration: none;
-    color: #424242;
-  }
-}
-
 // Cards
 
-.cards {
-  gap: 24px;
-
-  .card-content {
-    background-image: linear-gradient(to right, white 45%, rgba(255, 255, 255, 0)), url("/image/amur.png");
-    background-position: right;
-    background-repeat: no-repeat;
-    width: 831px;
-    height: 361px;
-  }
-
-  .card-buy {
-    padding: 23px 20px;
-    height: 100%;
-    align-items: center;
-    min-width: 261px;
-
-    .payment {
-      font-size: 13px;
-      color: rgba($color: #383838, $alpha: 0.8);
-    }
-
-    .credit-cards {
-      gap: 16px;
-      margin-bottom: 24px;
-    }
-
-    .different-country {
-      margin-bottom: 24px;
-
-      a {
-        color: #f77833;
-      }
-    }
-
-    .btn {
-      background-color: #f77833;
-      border-color: #f77833;
-      color: white;
-    }
-
-    .btn:hover {
-      background-color: #e66a2d;
-      border-color: #e66a2d;
-    }
-  }
-
-  @media (max-width: 576px) {
-    .card-content {
-      background-image: linear-gradient(to top, white 60%, rgba(255, 255, 255, 0)), url("/image/amur.png");
-      background-position: top;
-      background-size: contain;
-      background-repeat: no-repeat;
-      height: 600px;
-      justify-content: flex-end;
-    }
-  }
+.wrapper-card-game {
+  min-width: 0;
 }
 
-.btn {
-  background-color: #f77833;
-  border-color: #f77833;
-  color: white;
-  font-weight: 500;
-}
-
-.btn:hover {
-  background-color: #e66a2d;
-  border-color: #e66a2d;
-}
-
-.card-content {
+// CardGame
+.card-game {
+  background-image: linear-gradient(to right, white 45%, rgba(255, 255, 255, 0)), url("/image/amur.png");
+  background-position: right;
+  height: 361px;
   position: relative;
 
   .popular {
@@ -200,41 +125,6 @@ body {
   }
 }
 
-@media (max-width: 576px) {
-  .info {
-    max-width: 100%;
-    display: flex;
-    flex-direction: column;
-    align-items: center;
-
-    .title {
-      margin: 0 0 18px 0;
-
-      h1 {
-        font-size: 28px;
-        font-weight: 800;
-        margin: 0;
-      }
-    }
-  }
-
-  .card-content {
-    position: relative;
-
-    .popular {
-      position: absolute;
-      left: 0;
-      top: 0;
-      width: 115px;
-      text-align: center;
-      border-radius: 3px;
-      font-size: 10px;
-      background-color: rgba($color: #ffffff, $alpha: 0.8);
-      margin: 6px 0 0 6px;
-    }
-  }
-}
-
 .tags {
   margin-left: 24px;
   max-width: 321px;
@@ -256,6 +146,45 @@ body {
 }
 
 @media (max-width: 576px) {
+  .card-game {
+    background-image: linear-gradient(to top, white 60%, rgba(255, 255, 255, 0)), url("/image/amur.png");
+    background-position: top;
+    background-size: contain;
+    background-repeat: no-repeat;
+    height: 600px;
+    justify-content: flex-end;
+    position: relative;
+
+    .popular {
+      position: absolute;
+      left: 0;
+      top: 0;
+      width: 115px;
+      text-align: center;
+      border-radius: 3px;
+      font-size: 10px;
+      background-color: rgba($color: #ffffff, $alpha: 0.8);
+      margin: 6px 0 0 6px;
+    }
+  }
+
+  .info {
+    max-width: 100%;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+
+    .title {
+      margin: 0 0 18px 0;
+
+      h1 {
+        font-size: 28px;
+        font-weight: 800;
+        margin: 0;
+      }
+    }
+  }
+
   .tags {
     max-width: 226px;
     margin: 0;
@@ -280,75 +209,50 @@ body {
 
 // Reviews
 
-@media (max-width: 576px) {
-  .reviews-customer {
-    margin: 0 12px;
-    margin-bottom: 90px;
-
-    .count-reviews {
-      font-size: 24px;
-      margin: 24px 0 0 30px;
-
-      sup {
-        display: none;
-      }
-    }
-
-    .count-reviews-mobile {
-      margin-left: 30px;
-      font-size: 13px;
-      color: #424242;
-      margin-bottom: 3px;
-    }
-
-    .cards-review {
-      gap: 10px;
-    }
-  }
-}
-
-.reviews-customer {
-  max-width: 831px;
-}
-
 .count-reviews {
   font-size: 28px;
   color: #424242;
   font-weight: 800;
-  margin: 48px 0 24px 0;
 
   sup {
     font-weight: 500;
   }
 }
 
+.count-reviews-mobile {
+  margin-left: 18px;
+  font-size: 13px;
+  color: #424242;
+}
+
 .cards-review {
-  gap: 24px;
-  max-width: 831px;
   overflow-x: auto;
 
   .card-review {
     width: 261px;
     padding: 30px 24px;
     flex: 0 0 auto;
-    box-sizing: border-box;
 
     .date {
       font-size: 13px;
       color: #868686;
       margin-bottom: 16px;
     }
+
     .name-rating {
       height: 66px;
     }
+
     .name {
       font-size: 14px;
       font-weight: 700;
     }
+
     .holiday {
       margin: 16px 0 12px 0;
       font-weight: 700;
     }
+
     .review {
       font-size: 14px;
       height: 244px;
@@ -361,7 +265,11 @@ body {
 }
 
 .button-review {
-  margin: 40px 0 24px 0;
+  margin: 24px 0;
+}
+
+.slide {
+  margin-top: 10px;
 }
 
 .button-review .btn {
@@ -370,6 +278,7 @@ body {
   color: white;
   width: 437px;
   height: 52px;
+  font-weight: 500;
 
   &:hover {
     background-color: #e66a2d;
@@ -383,11 +292,90 @@ body {
   }
 }
 
-.button-review-wrapper {
+.slideshow {
+  gap: 6px;
+  margin: 6px 0;
+}
+
+.button-buy-wrapper-mobile {
   .button-review {
     margin: 0;
   }
   padding: 10px;
   box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
   border-radius: 8px;
+}
+
+@media (min-width: 576px) {
+  .reviews-customer {
+    margin-bottom: 70px;
+  }
+}
+
+@media (min-width: 992px) {
+  .reviews-customer {
+    margin-bottom: 0;
+  }
+}
+
+@media (max-width: 576px) {
+  .reviews-customer {
+    margin: 0 12px;
+    margin-bottom: 70px;
+
+    .count-reviews {
+      font-size: 24px;
+      margin: 24px 0 0 18px;
+
+      sup {
+        display: none;
+      }
+    }
+
+    .cards-review {
+      gap: 10px;
+    }
+
+    .button-review {
+      margin-top: 10px;
+    }
+  }
+}
+
+@media (max-width: 992px) {
+  .button-review {
+    margin-top: 10px;
+  }
+}
+
+// CardBuy
+
+.card-buy {
+  position: sticky;
+  top: 70px;
+  padding: 23px 20px;
+  height: 230px;
+  min-width: 261px;
+
+  .payment {
+    font-size: 13px;
+    color: rgba($color: #383838, $alpha: 0.8);
+  }
+
+  .different-country a {
+    color: #f77833;
+  }
+
+  .btn {
+    background-color: #f77833;
+    border-color: #f77833;
+    color: white;
+    font-weight: 500;
+  }
+
+  .btn:hover {
+    background-color: #e66a2d;
+    border-color: #e66a2d;
+    color: white;
+  }
 }

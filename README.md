@@ -5,7 +5,10 @@
 
 ## Установка и запуск приложения:
 1.Клонировать репозиторий на свое устройство git clone https://github.com/lerkooow/test_kvestiks.git
+
 2.Установить Composer (если не установлен)
-2.Установить зависимости с помощью composer install
-3.Запустить приложение php -S localhost:7000
+
+3.Установить зависимости с помощью composer install
+
+4.Запустить приложение php -S localhost:7000
 

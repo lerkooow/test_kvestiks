@@ -1,0 +1,147 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Kvestiks</title>
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css" rel="stylesheet" />
+    <link rel="stylesheet" href="style.css" />
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css" />
+    <style>
+      @import url("https://fonts.googleapis.com/css2?family=Open+Sans:ital,wght@0,300..800;1,300..800&display=swap");
+    </style>
+  </head>
+  <body>
+    <!-- Header -->
+    <header class="header fixed-top bg-white shadow-sm">
+      <nav class="container d-flex justify-content-between align-items-center">
+        <div class="nav-item-mobile d-flex d-lg-none">
+          <img src="/image/burger-menu.png" alt="burger-menu-icon" />
+        </div>
+        <div class="header_logo my-sm-2 my-0">
+          <a href="/" class="logo">
+            <img src="/image/logo.png" alt="kvestiks-logo" />
+          </a>
+        </div>
+        <div class="nav-items d-flex align-items-center">
+          {% for item in nav_items %}
+            <div class="nav-item text-center d-none d-lg-block">
+              <img src="{{ item.img_src }}" alt="{{ item.img_alt }}" />
+              <p>{{ item.label }}</p>
+            </div>
+          {% endfor %}
+          <div class="nav-item d-flex d-lg-none">
+            <img src="/image/orders.png" alt="orders-icon" />
+          </div>
+        </div>
+      </nav>
+    </header>
+
+    <!-- Main -->
+    <main class="container main">
+      <!-- Breadcrumb -->
+      <div aria-label="breadcrumb" class="d-none d-lg-block">
+        <ol class="breadcrumb m-0 pt-4">
+          <li class="breadcrumb-item">
+            <a href="#" class="text-decoration-none text-muted">Главная</a>
+          </li>
+          <li class="breadcrumb-item active" aria-current="page">Каталог</li>
+        </ol>
+      </div>
+
+      <!-- Cards -->
+      <div class="cards d-flex gap-4">
+        <div class="d-flex flex-column wrapper-card-game">
+          <!-- CardGame -->
+          <div class="card card-game">
+            <div class="popular">
+              <p>самый популярный</p>
+            </div>
+            <div class="info">
+              <div class="title">
+                <h1>{{ title }}</h1>
+              </div>
+              <div class="tags">
+                {% for tag in tags %}
+                  <p>{{ tag }}</p>
+                {% endfor %}
+              </div>
+              <div class="description">
+                <p>{{ description }}</p>
+              </div>
+            </div>
+          </div>
+
+          <!-- Reviews -->
+          <div class="reviews-customer">
+            <p class="count-reviews mt-sm-5 mb-sm-4">
+              Отзывы клиентов <sup>{{ reviews|length }}</sup>
+            </p>
+            <p class="count-reviews-mobile d-sm-none mb-1">
+              1/{{ reviews|length }}
+            </p>
+            <div class="cards-review d-flex gap-4">
+              {% for review in reviews %}
+                <div class="card card-review">
+                  <p class="date">{{ review.date }}</p>
+                  <div class="name-rating">
+                    <p class="name">{{ review.name }} ({{ review.players }} игроков {{ review.age_range }})</p>
+                    <div class="rating">
+                      {% for i in 1..5 %}
+                        <span class="fa fa-star {% if i <= review.rating %}checked{% endif %}"></span>
+                      {% endfor %}
+                    </div>
+                  </div>
+                  <p class="holiday">{{ review.holiday }}</p>
+                  <p class="review">{{ review.text }}</p>
+                </div>
+              {% endfor %}
+            </div>
+
+            <!-- Slide -->
+            <div class="slide d-flex justify-content-center d-block d-lg-none">
+              <img src="/image/ellipse.png" />
+              <img src="/image/rectangle.png" />
+              <img src="/image/ellipse.png" />
+              <img src="/image/ellipse.png" />
+              <img src="/image/ellipse.png" />
+            </div>
+
+            <!-- Button more reviews -->
+            <div class="button-review d-flex justify-content-center">
+              <button type="button" class="btn">Смотреть все отзывы</button>
+            </div>
+          </div>
+        </div>
+
+        <!-- CardBuy -->
+        <div class="card card-buy d-none d-lg-flex align-items-center">
+          <p class="payment">Принимаем к оплате</p>
+          <div class="credit-cards d-flex align-items-center gap-3 mb-4">
+            {% for credit in credit_cards %}
+              <img src="{{ credit.img_src }}" alt="{{ credit.img_alt }}" />
+            {% endfor %}
+          </div>
+          <p class="different-country text-center mb-4">
+            Я из другой страны — <br />
+            <a href="https://kvestiks.ru/scenarios/o-boze-kakoj-muzcina#">как оплатить?</a>
+          </p>
+
+          <!-- Button buy -->
+          <button type="button" class="btn">Купить квест 500 ₽</button>
+        </div>
+      </div>
+
+      <!-- Button buy mobile -->
+      <div class="button-buy-wrapper-mobile d-block d-lg-none bg-white shadow-lg fixed-bottom">
+        <div class="button-review buy d-flex justify-content-center">
+          <button type="button" class="btn d-flex align-items-center justify-content-between">
+            <p>Купить квест</p>
+            <p>500 ₽</p>
+          </button>
+        </div>
+      </div>
+    </main>
+  </body>
+</html>
